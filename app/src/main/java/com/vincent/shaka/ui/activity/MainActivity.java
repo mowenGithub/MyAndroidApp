@@ -3,10 +3,10 @@ package com.vincent.shaka.ui.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
 import com.squareup.picasso.Picasso;
 import com.vincent.shaka.R;
 import com.vincent.shaka.model.ServerMap;
-import com.vincent.shaka.model.param.TestParam;
 import com.vincent.shaka.model.response.GithubResponse;
 import com.vincent.shaka.model.response.TestResponse;
 import com.vincent.shaka.network.NetworkManager;

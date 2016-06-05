@@ -1,2 +1,2 @@
 # Shaka
-My Perfect Android App Demo
+My Android App Demo

@@ -1,11 +1,51 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- font style -->
+    <style name="Display4" parent="TextAppearance.AppCompat.Display4">
+        <item name="android:textSize">@dimen/shaka_text_size_display_4_material</item>
+    </style>
+    <style name="Display3" parent="TextAppearance.AppCompat.Display3">
+        <item name="android:textSize">@dimen/shaka_text_size_display_3_material</item>
+    </style>
+    <style name="Display2" parent="TextAppearance.AppCompat.Display2">
+        <item name="android:textSize">@dimen/shaka_text_size_display_2_material</item>
+    </style>
+    <style name="Display1" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textSize">@dimen/shaka_text_size_display_1_material</item>
+    </style>
+    <style name="Headline" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/shaka_text_size_headline_material</item>
+    </style>
+    <style name="Large" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textSize">@dimen/shaka_text_size_large_material</item>
+    </style>
+    <style name="Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">@dimen/shaka_text_size_title_material</item>
+    </style>
+    <style name="Medium" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">@dimen/shaka_text_size_medium_material</item>
+    </style>
+    <style name="Subtitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textSize">@dimen/shaka_text_size_subtitle_material</item>
+    </style>
+    <style name="Small" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textSize">@dimen/shaka_text_size_small_material</item>
+    </style>
+
+    <style name="tallerBarStyle" parent="@android:style/Widget.SeekBar" >
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@android:drawable/progress_horizontal</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_horizontal</item>
+        <item name="android:minHeight">8dip</item>
+        <item name="android:maxHeight">20dip</item>
     </style>
 
 </resources>

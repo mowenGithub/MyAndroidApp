@@ -103,14 +103,16 @@ public class NetworkManager {
 
         CommonParam commonParam = new CommonParam();
         HashMap<String, String> commonParamMap = commonParam.getCommonParam();
+        HashMap<String, String> requestParams = null;
         String paramJson = null;
         String sign = "";
         try {
-//            if(param != null) {
+            if(param != null) {
                 paramJson = gson.toJson(param);
-                sign = NetworkAccessStrategy.getSignature(gson.fromJson(paramJson, HashMap.class), Constants.NETWORK_SECRET);
+                requestParams = gson.fromJson(paramJson, HashMap.class);
+                sign = NetworkAccessStrategy.getSignature(requestParams, Constants.NETWORK_SECRET);
                 commonParamMap.put("token", sign);
-//            }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -139,7 +141,7 @@ public class NetworkManager {
         }
 
         final String finalCacheKey = cacheKey;
-        CustomJsonRequest jsonRequest= new CustomJsonRequest(method, url, paramJson, new Response.Listener<String>() {
+        CustomJsonRequest jsonRequest= new CustomJsonRequest(method, url, requestParams, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -154,7 +156,9 @@ public class NetworkManager {
                             mRequestQueue.getCache().invalidate(finalCacheKey, true);
                         }
                     }
-                    netWorkCallback.onResponse(new NetworkResult(requestServer, baseResponse));
+                    if(netWorkCallback != null) {
+                        netWorkCallback.onResponse(new NetworkResult(requestServer, baseResponse));
+                    }
                 } catch (Exception e) {
                     LogUtils.e("Response is not a jsonString or not match Object:  " + e.getStackTrace());
                 }
@@ -162,7 +166,9 @@ public class NetworkManager {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                netWorkCallback.onErrorResponse(error);
+                if(netWorkCallback != null) {
+                    netWorkCallback.onErrorResponse(error);
+                }
             }
         }, finalCacheKey);
         jsonRequest.setShouldCache(shouldCache);
